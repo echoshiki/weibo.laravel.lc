@@ -16,3 +16,5 @@ use PhpParser\Node\Arg;
 
 Route::get('/', 'StaticPagesController@home');
 Route::get('/about', 'StaticPagesController@about');
+
+Route::get('/signup', 'UsersController@create')->name('signup');
