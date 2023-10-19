@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', '注册页面')
+@section('title', '注册页 Register')
 
 @section('content')
     <div class="card-body">
