@@ -9,7 +9,11 @@
     @include('layouts._header')
     <div class="container">
         <div class="offset-md-1">
-            @yield('content')
+            <div class="bg-light p-3 p-sm-5 rounded">
+                <h2>@yield('title', 'Weibo App')</h2>
+                <hr>
+                @yield('content')
+            </div>
             @include('layouts._footer')
         </div>
     </div>
