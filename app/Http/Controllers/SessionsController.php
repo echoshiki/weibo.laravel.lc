@@ -70,8 +70,10 @@ class SessionsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        Auth::logout();
+        session()->flash('success', '您已成功退出!');
+        return redirect()->route('login');
     }
 }
