@@ -3,6 +3,9 @@
 		<a class="navbar-brand" href="/">Weibo App</a>
 		<ul class="navbar-nav justify-content-end">
 			@if (Auth::check())
+			<li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+			<li class="nav-item"><a class="nav-link" href="/help">帮助</a></li>
+			<li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">所有用户</a></li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
