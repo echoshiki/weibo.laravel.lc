@@ -8,6 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        // 未登录用户限制策略
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store']
+        ]);
+
+        $this->middleware('guest', [
+            'only' => ['create', 'store']
+        ]);
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -60,6 +72,8 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
+        // 执行验证策略
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
@@ -68,6 +82,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('update', $user);
         $this->validate($request, [
             'name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6'
@@ -80,8 +95,8 @@ class UsersController extends Controller
         }
 
         $user->update($data);
-
-        return redirect()->route('users.show', $user->id);
+        session()->flash('success', '个人资料更新成功!');
+        return redirect()->route('users.show', $user);
     }
 
     /**
