@@ -16,20 +16,13 @@
         </thead>
         <tbody>
             @foreach($users as $user)
-            <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->created_at }}</td>
-                <td>
-                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">个人中心</a>
-                    {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success">修改</a>
-                    <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-sm btn-danger">删除</a> --}}
-                </td>
-            </tr>
+            @include('users._user')
             @endforeach
         </tbody>
     </table>
+    <div class="mb-3">
+        {!! $users->render(); !!}
+    </div>
 
 @stop
 
