@@ -5,7 +5,9 @@
     <td>{{ $user->created_at }}</td>
     <td>
         <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">个人中心</a>
-        {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success">修改</a> --}}
+        @can('update', $user)
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success">修改</a>
+        @endcan
         @can('destroy', $user)
         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
             @csrf

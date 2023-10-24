@@ -41,10 +41,18 @@ class SessionsController extends Controller
         ]);
         if (Auth::attempt($credentials, $request->has('remember'))) {
             # 验证通过
-            session()->flash('success', '欢迎回来!');
-            # 成功后返回跳转登陆前的页面，没有就返回默认值
-            $fallback = route('users.show', [Auth::user()]);
-            return redirect()->intended($fallback);
+            if (Auth::user()->activated) {
+                # 用户已激活
+                session()->flash('success', '欢迎回来!');
+                # 成功后返回跳转登陆前的页面，没有就返回默认值
+                $fallback = route('users.show', [Auth::user()]);
+                return redirect()->intended($fallback);
+            } else {
+                # 用户未激活
+                Auth::logout();
+                session()->flash('warning', '很抱歉,您尚未激活您的账号');
+                return redirect()->back()->withInput();
+            }     
         } else {
             # 验证失败
             session()->flash('danger', '很抱歉,您的邮箱和密码不匹配');
