@@ -13,8 +13,14 @@
                 <input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}">
             </div>
             <div class="mb-3">
-                <label for="password">密码：</label>
+                <label for="password">密码：<a href="{{ route('password.request') }}">（忘记密码？）</a></label>
                 <input type="password" name="password" id="password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="remember" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">记住我</label>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Login Now</button>
         </form>

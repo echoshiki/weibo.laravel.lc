@@ -25,4 +25,13 @@ Route::post('login', 'SessionsController@store')->name('login');
 // Route::get('logout', 'SessionsController@destroy')->name('logout');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
+# 激活用户
 Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
+
+# 忘记密码
+Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'PasswordController@sendResetLinkEmail')->name('password.email');
+
+# 重置密码
+Route::get('password/reset/{token}', 'PasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'PasswordController@reset')->name('password.update');
