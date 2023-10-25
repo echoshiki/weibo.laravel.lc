@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Mail;
 class PasswordController extends Controller
 {
     public function __construct() {
-        $this->middleware('guest');
+        # 十分钟只能发送三次重置密码邮件
+        $this->middleware('throttle:3,10', [
+            'only' => ['sendResetLinkEmail']
+        ]);
     }
 
     public function showLinkRequestForm() {
