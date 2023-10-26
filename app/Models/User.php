@@ -50,4 +50,9 @@ class User extends Authenticatable
             $user->activation_token = Str::random(10);
         });
     }
+
+    # 以一对多的形式关联 Status 模型
+    public function statuses() {
+        return $this->hasMany(Status::class);
+    }
 }
