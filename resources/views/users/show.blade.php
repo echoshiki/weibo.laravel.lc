@@ -4,9 +4,22 @@
 
 @section('content')
     @include('shared._message')
-    <div>
-        <p class="lead">用户名：{{ $user->name }}</p>
-        <p class="lead">邮箱：{{ $user->email }}</p>
-        <p class="lead">注册日期：{{ $user->created_at }}</p> 
-    </div>
+    <section class="user_info">@include('shared._user_info')</section>
+    <hr>
+    <h4>微博列表</h4>
+    <hr>
+    <section class="status">
+        @if (count($statuses) > 0)
+        <ul class="list-unstyled">
+            @foreach ($statuses as $status)
+                @include('statuses._status')
+            @endforeach
+        </ul>
+        <div class="mt-3">
+            {!! $statuses->render() !!}
+        </div>
+        @else
+        <p>没有任何数据！</p>
+        @endif
+    </section>
 @stop
