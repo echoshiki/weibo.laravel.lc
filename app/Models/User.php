@@ -55,4 +55,9 @@ class User extends Authenticatable
     public function statuses() {
         return $this->hasMany(Status::class);
     }
+
+    # 取出用户所有的微博动态
+    public function feed() {    
+        return $this->statuses()->orderBy('created_at', 'desc');
+    }
 }

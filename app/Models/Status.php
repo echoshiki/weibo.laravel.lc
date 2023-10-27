@@ -13,8 +13,8 @@ class Status extends Model
         'content',
     ];
 
-    # 以一对多的形式关联 User 模型
+    # 关联 User 模型
     public function user() {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }
