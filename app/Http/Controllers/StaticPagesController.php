@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Status;
+use App\Models\User;
 
 
 
@@ -15,7 +16,7 @@ class StaticPagesController extends Controller
         if (Auth::check()) {
             /** @var \App\Models\User $user **/
             $user = Auth::user();
-            $feed_items =$user->feed()->paginate(30);
+            $feed_items = $user->feed()->paginate(30);
         }
         return view('static_pages/home', compact('feed_items'));
     }
