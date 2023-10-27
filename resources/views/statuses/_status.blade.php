@@ -6,4 +6,13 @@
         </h5>
         {{ $status->content }}
     </div>
+    @can('destroy', $status)
+    <div>
+        <form action="{{ route('statuses.destroy', $status) }}" method="post" onsubmit="return confirm('确定删除这条微博么？')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger" style="width: 60px;">删除</button>
+        </form>
+    </div>
+    @endcan
 </li>

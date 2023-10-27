@@ -38,7 +38,9 @@ class StatusesController extends Controller
             'content' => 'required|max:140'
         ]);
 
-        Auth::user()->statuses()->create([
+        /** @var \App\Models\User $user **/
+        $user = Auth::user();
+        $user->statuses()->create([
             'content' => $request->content
         ]);
 
@@ -73,8 +75,11 @@ class StatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Status $status)
     {
-        //
+        $this->authorize('destroy', $status);
+        $status->delete();
+        session('success', '删除成功');
+        return redirect()->back();
     }
 }
