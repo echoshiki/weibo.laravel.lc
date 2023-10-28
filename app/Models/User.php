@@ -50,6 +50,12 @@ class User extends Authenticatable
             $user->activation_token = Str::random(10);
         });
     }
+    
+    public function gravatar($size = '100')
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "https://cdn.v2ex.com/gravatar/$hash?s=$size";
+    }
 
     # 以一对多的形式关联 Status 模型
     public function statuses() {

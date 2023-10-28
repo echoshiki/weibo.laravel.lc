@@ -1,5 +1,6 @@
-<div>
-    <p class="lead">用户名：{{ $user->name }}</p>
-    <p class="lead">邮箱：{{ $user->email }}</p>
-    <p class="lead">注册日期：{{ $user->created_at->diffForHumans() }}</p> 
+<div class="_userinfo">
+    <div class="gravatar">
+        <img src="{{ $user->gravatar('100') }}" alt="{{ $user->name }}" class="gravatar"/>
+    </div>
+    <p class="lead">{{ $user->name }}</p>
 </div>

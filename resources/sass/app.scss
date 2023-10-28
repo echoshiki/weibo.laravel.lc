@@ -39,18 +39,23 @@ footer {
   }
 }
 
-.user_info {
-  color: #212121;
-  p {
-    font-size: 15px;
-    line-height: 1.2;
+._userinfo {
+  width: 100%;
+  text-align: center;
+  .lead {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 2;
+    color: #212121;
   }
 }
 
-.user_stats {
-  margin: 10px 0;
+._stats {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   a {
     display: flex;
     flex-direction: column;
@@ -63,5 +68,34 @@ footer {
       font-weight: bold;
     }
   }
-
 }
+
+._status_item {
+
+  ._status_content {
+    padding: 0 10px;
+    text-align: justify;
+    h5 {
+      font-size: 20px;
+    }
+    small {
+      color: #999;
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+  ._status_control {
+    display: flex;
+    align-items: center;
+  }
+}
+
+._status_form {
+  button {
+    width: 100%;
+    line-height: 2;
+  }
+}
+
+
