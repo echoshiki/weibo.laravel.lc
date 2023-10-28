@@ -4,6 +4,7 @@
 
 @section('content')
     @include('shared._message')
+    <section class="user_stats">@include('shared._stats')</section>
     <section class="user_info">@include('shared._user_info')</section>
     <hr>
     <h4>微博列表</h4>

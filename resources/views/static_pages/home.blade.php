@@ -7,17 +7,21 @@
     @if (Auth::check())
     
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
             <section class="status_form">
               @include('shared._status_form')
             </section>
             <hr>
             @include('shared._feed')
         </div>
-        <aside class="col-md-5">
+        <aside class="col-md-3 ms-5">
+            <section class="user_stats">
+                @include('shared._stats', ['user' => Auth::user()])
+            </section> 
+            <hr>
             <section class="user_info">
-              @include('shared._user_info', ['user' => Auth::user()])
-            </section>
+                @include('shared._user_info', ['user' => Auth::user()])
+              </section>         
         </aside> 
     </div>
 

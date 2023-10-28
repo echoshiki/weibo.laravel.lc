@@ -38,3 +38,30 @@ footer {
     height: 17px;
   }
 }
+
+.user_info {
+  color: #212121;
+  p {
+    font-size: 15px;
+    line-height: 1.2;
+  }
+}
+
+.user_stats {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #212121;
+    font-weight: 300;
+    strong {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+
+}
