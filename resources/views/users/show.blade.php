@@ -5,6 +5,7 @@
 @section('content')
     @include('shared._message')
     <section class="user_info">@include('shared._user_info')</section>
+    @include('users._follow_form')
     <hr>
     <section class="user_stats">@include('shared._stats')</section>
     <hr>
