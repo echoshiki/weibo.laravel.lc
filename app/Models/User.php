@@ -54,7 +54,8 @@ class User extends Authenticatable
     public function gravatar($size = '100')
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "https://cdn.v2ex.com/gravatar/$hash?s=$size";
+        // return "https://cravatar.cn/avatar/$hash?s=$size";
+        return "https://cdn.v2ex.com/gravatar/$hash?d=retro&s=$size";
     }
 
     # 以一对多的形式关联 Status 模型
@@ -63,8 +64,10 @@ class User extends Authenticatable
     }
 
     # 取出用户所有的微博动态
-    public function feed() {    
-        return $this->statuses()->orderBy('created_at', 'desc');
+    public function feed() {  
+        $user_ids = $this->followings->pluck('id')->toArray();
+        array_push($user_ids, $this->id);
+        return Status::whereIn('user_id', $user_ids)->with('user')->orderBy('created_at', 'desc');
     }
 
     # 获取粉丝 被关注者视角
