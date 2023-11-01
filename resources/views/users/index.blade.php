@@ -12,7 +12,7 @@
             <th>姓名</th>
             <th>邮箱</th>
             <th>注册时间</th>
-            <th>操作</th>
+            <th width="300">操作</th>
         </thead>
         <tbody>
             @foreach($users as $user)

@@ -9,7 +9,7 @@
             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success">修改</a>
         @endcan
         @can('destroy', $user)
-        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="user-delete-form">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-sm btn-danger delete-btn">删除</button>
